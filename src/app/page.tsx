@@ -38,7 +38,7 @@ function Clients() {
       <Container>
         <FadeIn className="flex items-center gap-x-8">
           <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
-            We've developed many technology solutions.
+            We've developed solutions on many platforms.
           </h2>
           <div className="h-px flex-auto bg-neutral-800" />
         </FadeIn>
@@ -162,7 +162,7 @@ function Services() {
               used for the past six years.
             </ListItem>
             <ListItem title="Custom content management">
-              At Studio we understand the importance of having a robust and
+              At Higge we understand the importance of having a robust and
               customised CMS. That’s why we run all of our client projects out
               of a single, enormous Joomla instance.
             </ListItem>
