@@ -11,6 +11,12 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 import shiki from 'shiki'
 import { unifiedConditional } from 'unified-conditional'
 
+const withMDX = nextMDX({
+  extension: /\.mdx?$/
+})
+
+
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
@@ -33,68 +39,70 @@ const nextConfig = {
   // },
 }
 
-function remarkMDXLayout(source, metaName) {
-  let parser = Parser.extend(jsx())
-  let parseOptions = { ecmaVersion: 'latest', sourceType: 'module' }
+export default withMDX(nextConfig)
+// function remarkMDXLayout(source, metaName) {
+//   let parser = Parser.extend(jsx())
+//   let parseOptions = { ecmaVersion: 'latest', sourceType: 'module' }
 
-  return (tree) => {
-    let imp = `import _Layout from '${source}'`
-    let exp = `export default function Layout(props) {
-      return <_Layout {...props} ${metaName}={${metaName}} />
-    }`
+//   return (tree) => {
+//     let imp = `import _Layout from '${source}'`
+//     let exp = `export default function Layout(props) {
+//       return <_Layout {...props} ${metaName}={${metaName}} />
+//     }`
 
-    tree.children.push(
-      {
-        type: 'mdxjsEsm',
-        value: imp,
-        data: { estree: parser.parse(imp, parseOptions) },
-      },
-      {
-        type: 'mdxjsEsm',
-        value: exp,
-        data: { estree: parser.parse(exp, parseOptions) },
-      },
-    )
-  }
-}
+//     tree.children.push(
+//       {
+//         type: 'mdxjsEsm',
+//         value: imp,
+//         data: { estree: parser.parse(imp, parseOptions) },
+//       },
+//       {
+//         type: 'mdxjsEsm',
+//         value: exp,
+//         data: { estree: parser.parse(exp, parseOptions) },
+//       },
+//     )
+//   }
+// }
 
-export default async function config() {
-  let highlighter = await shiki.getHighlighter({
-    theme: 'css-variables',
-  })
 
-  let withMDX = nextMDX({
-    extension: /\.mdx$/,
-    options: {
-      recmaPlugins: [recmaImportImages],
-      rehypePlugins: [
-        [rehypeShiki, { highlighter }],
-        [
-          remarkRehypeWrap,
-          {
-            node: { type: 'mdxJsxFlowElement', name: 'Typography' },
-            start: ':root > :not(mdxJsxFlowElement)',
-            end: ':root > mdxJsxFlowElement',
-          },
-        ],
-      ],
-      remarkPlugins: [
-        remarkGfm,
-        remarkUnwrapImages,
-        [
-          unifiedConditional,
-          [
-            new RegExp(`^${escapeStringRegexp(path.resolve('src/app/blog'))}`),
-            [[remarkMDXLayout, '@/app/blog/wrapper', 'article']],
-          ],
-          [
-            new RegExp(`^${escapeStringRegexp(path.resolve('src/app/work'))}`),
-            [[remarkMDXLayout, '@/app/work/wrapper', 'caseStudy']],
-          ],
-        ],
-      ],
-    },
-  })
+// export default async function config() {
+//   let highlighter = await shiki.getHighlighter({
+//     theme: 'css-variables',
+//   })
 
-  return withMDX(nextConfig)
-}
+//   let withMDX = nextMDX({
+//     extension: /\.mdx$/,
+//     options: {
+//       recmaPlugins: [recmaImportImages],
+//       rehypePlugins: [
+//         [rehypeShiki, { highlighter }],
+//         [
+//           remarkRehypeWrap,
+//           {
+//             node: { type: 'mdxJsxFlowElement', name: 'Typography' },
+//             start: ':root > :not(mdxJsxFlowElement)',
+//             end: ':root > mdxJsxFlowElement',
+//           },
+//         ],
+//       ],
+//       remarkPlugins: [
+//         remarkGfm,
+//         remarkUnwrapImages,
+//         [
+//           unifiedConditional,
+//           [
+//             new RegExp(`^${escapeStringRegexp(path.resolve('src/app/blog'))}`),
+//             [[remarkMDXLayout, '@/app/blog/wrapper', 'article']],
+//           ],
+//           [
+//             new RegExp(`^${escapeStringRegexp(path.resolve('src/app/work'))}`),
+//             [[remarkMDXLayout, '@/app/work/wrapper', 'caseStudy']],
+//           ],
+//         ],
+//       ],
+//     },
+//   })
+
+//   return withMDX(nextConfig)
+// }
