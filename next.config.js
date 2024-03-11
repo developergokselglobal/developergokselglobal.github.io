@@ -7,7 +7,7 @@ const withMDX = require('@next/mdx')({
     webpack(config, options) {
       config.module.rules.push({
         test: /\.mdx?$/,
-        use: ['babel-loader', '@mdx-js/loader'],
+        use: ['@mdx-js/loader'],
       })
       return config
     },
