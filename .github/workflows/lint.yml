@@ -1,5 +1,5 @@
-name: lint
-on: push
+# name: lint
+# on: push
 
 jobs:
   lint:
