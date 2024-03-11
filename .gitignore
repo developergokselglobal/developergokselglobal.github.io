@@ -1,2 +1,25 @@
-node_modules
-.next/
+# dependencies
+/node_modules
+
+# Next.js build output
+/.next
+
+# dotenv environment variables file
+.env
+
+# Next.js production build
+/out
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE - VSCode
+.vscode
+
+# Operating System Files
+.DS_Store
+Thumbs.db
