@@ -38,6 +38,7 @@ export function StylizedImage({ shape = 0, className, ...props }) {
               <Image
                 alt=""
                 className="w-full bg-neutral-100 object-cover"
+                unoptimized
                 style={{ aspectRatio: `${width} / ${height}` }}
                 {...props}
               />
