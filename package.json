@@ -37,7 +37,7 @@
     "unified-conditional": "0.0.2"
   },
   "devDependencies": {
-    "@mdx-js/loader": "^3.0.1",
+  
     "babel-loader": "^9.1.3",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
