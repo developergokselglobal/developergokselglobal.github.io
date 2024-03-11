@@ -13,9 +13,24 @@ import { unifiedConditional } from 'unified-conditional'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/src/app",
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
-  
+  // webpack(config, options) {
+  //   // Add MDX loader
+  //   config.module.rules.push({
+  //     test: /\.mdx$/,
+  //     use: [
+  //       options.defaultLoaders.babel,
+  //       {
+  //         loader: '@mdx-js/loader',
+  //         options: {
+  //           // Add your MDX specific options here if needed
+  //         },
+  //       },
+  //     ],
+  //   });
+
+  //   return config;
+  // },
 }
 
 function remarkMDXLayout(source, metaName) {
