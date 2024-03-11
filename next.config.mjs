@@ -13,7 +13,7 @@ import { unifiedConditional } from 'unified-conditional'
 
 const withMDX = nextMDX({
   extension: /\.mdx?$/
-})
+});
 
 
 
@@ -39,7 +39,9 @@ const nextConfig = {
   // },
 }
 
-export default withMDX(nextConfig)
+export default withMDX({
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+});
 // function remarkMDXLayout(source, metaName) {
 //   let parser = Parser.extend(jsx())
 //   let parseOptions = { ecmaVersion: 'latest', sourceType: 'module' }
