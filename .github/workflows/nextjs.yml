@@ -8,11 +8,6 @@ on:
   # Runs on pushes targeting the default branch 
   push:
     branches: ["main"]
-    paths:
-      - "**"
-    # Add a condition to check if the commit message contains "deploy"
-    if: "contains(github.event.head_commit.message, 'deploy')"
-
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
