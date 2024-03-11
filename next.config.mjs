@@ -13,6 +13,7 @@ import { unifiedConditional } from 'unified-conditional'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: "/src/app",
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   
 }
