@@ -18,6 +18,9 @@ import logoNorthAdventures from '@/images/clients/north-adventures/logo-light.sv
 import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
 import logoPhobiaLight from '@/images/clients/phobia/logo-light.svg'
 import logoUnseal from '@/images/clients/unseal/logo-light.svg'
+import logoShopify from '@/images/techs/shopify/logo-light.svg'
+import logoGoogle from '@/images/techs/google/logo-light.svg'
+import logoTiktok from '@/images/techs/tiktok/logo-light.svg'
 import imageLaptop from '@/images/laptop.jpg'
 import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
 
@@ -30,6 +33,12 @@ const clients = [
   ['Green Life', logoGreenLife],
   ['Bright Path', logoBrightPath],
   ['North Adventures', logoNorthAdventures],
+]
+
+const techs = [
+  ['Shopify', logoShopify],
+  ['Google', logoGoogle],
+  ['Tiktok', logoTiktok],
 ]
 
 function Clients() {
@@ -60,6 +69,37 @@ function Clients() {
     </div>
   )
 }
+
+function Techs() {
+  return (
+    <div className="mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56">
+      <Container>
+        <FadeIn className="flex items-center gap-x-8">
+          <h2 className="text-center font-display text-sm font-semibold tracking-wider text-white sm:text-left">
+            We've developed solutions on many platforms.
+          </h2>
+          <div className="h-px flex-auto bg-neutral-800" />
+        </FadeIn>
+        <FadeInStagger faster>
+          <ul
+            role="list"
+            className="mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4"
+          >
+            {techs.map(([tech, logo]) => (
+              <li key={tech}>
+                <FadeIn>
+                  <Image src={logo} alt={tech} unoptimized />
+                </FadeIn>
+              </li>
+            ))}
+          </ul>
+        </FadeInStagger>
+      </Container>
+    </div>
+  )
+}
+
+
 
 function CaseStudies({
   caseStudies,
@@ -196,7 +236,7 @@ export default async function Home() {
         </FadeIn>
       </Container>
 
-      <Clients />
+      <Techs/>
 
       <CaseStudies caseStudies={caseStudies} />
 
