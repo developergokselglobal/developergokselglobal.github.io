@@ -21,6 +21,8 @@ import logoUnseal from '@/images/clients/unseal/logo-light.svg'
 import logoShopify from '@/images/techs/shopify/logo-light.svg'
 import logoGoogle from '@/images/techs/google/logo-light.svg'
 import logoTiktok from '@/images/techs/tiktok/logo-light.svg'
+import logoMeta from '@/images/techs/meta/logo-light.svg'
+import logoYoutube from '@/images/techs/youtube/logo-light.svg'
 import imageLaptop from '@/images/laptop.jpg'
 import { type CaseStudy, type MDXEntry, loadCaseStudies } from '@/lib/mdx'
 
@@ -39,6 +41,8 @@ const techs = [
   ['Shopify', logoShopify],
   ['Google', logoGoogle],
   ['Tiktok', logoTiktok],
+  ['Meta', logoMeta],
+  ['Youtube', logoYoutube],
 ]
 
 function Clients() {
